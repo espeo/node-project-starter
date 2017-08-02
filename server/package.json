@@ -7,18 +7,18 @@
     "start": "ENV='dev' nodemon src/index.js --exec babel-node --presets es2015,stage-2",
     "build": "ENV='prod' babel src -d dist",
     "serve": "ENV='prod' node dist/index.js",
-    "test": "standard && ENV='test' nyc --reporter=text mocha --compilers js:babel-register"
+    "test": "eslint . && ENV='test' nyc --reporter=text mocha --compilers js:babel-register"
   },
-  "standard": {
-    "ignore": [
+  "eslintIgnore": [
       "dist"
-    ]
-  },
+  ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.15.3",
     "pg": "^7.0.2",
+    "mocha": "^3.4.2",
+    "chai": "^4.1.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.4.2",
     "swagger-jsdoc": "^1.9.7",
@@ -30,16 +30,15 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
     "babel-standard": "^0.2.0",
-    "chai": "^4.1.0",
     "eslint": "^4.3.0",
-    "eslint-config-standard": "^10.2.1",
+    "eslint-config-airbnb": "^15.1.0",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-standard": "^3.0.1",
-    "mocha": "^3.4.2",
     "nodemon": "^1.11.0",
-    "nyc": "^11.1.0",
-    "standard": "^10.0.2"
+    "nyc": "^11.1.0"
   }
 }

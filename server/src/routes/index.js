@@ -1,6 +1,6 @@
-import express from 'express'
+import express from 'express';
 
-const router = express.Router()
+const router = express.Router();
 
 /**
  * @swagger
@@ -13,8 +13,8 @@ const router = express.Router()
  *       200:
  *         description: api setup is working
  */
-router.get('/', (req, res) => {
-  res.send('')
-})
+router.get('/api', (req, res) => {
+  res.send('');
+});
 
-export default router
+export default router;

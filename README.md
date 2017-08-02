@@ -1,7 +1,9 @@
-<b> Node project starter
+# Node project starter
 
-this project is meant to be used as a starting for developing Node applications.
-It contains basic express setup with
+## this project is meant to be used as a starting for developing Node applications.
+
+
+### **Content**
  - mocha + chai + nyc for testing
  - swagger for documentation
  - docker config
@@ -10,14 +12,16 @@ It contains basic express setup with
  - sequelize and psql for database layer
  - eslint configuration
 
-<b> To use this stub you need to clone repository and later run
+### **Installation and setup**
 
-<code> docker-compose up
+```
+docker-compose up
+```
 
-The app will run on localhost:3000
+### **Testing**
 
-<b> To run tests use
-
-<code> docker exec {name_of_node_container} npm test
+```
+ docker exec {name_of_node_container} npm test
+```
 
 

@@ -1,6 +1,18 @@
-const env = process.env.ENV
+const env = process.env.ENV;
 
-const envVars = require(`./config.${env}`)
+const testEnv = require('./config.test');
+const devEnv = require('./config.dev');
+const prodEnv = require('./config.prod');
+
+let envVars;
+
+if (env === 'test') {
+  envVars = testEnv;
+} else if (env === 'dev') {
+  envVars = devEnv;
+} else {
+  envVars = prodEnv;
+}
 
 const config = {
   swagger: {
@@ -8,15 +20,15 @@ const config = {
       info: {
         title: 'Project name',
         version: '1.0.0',
-        description: 'project description'
+        description: 'project description',
       },
       host: `localhost:${envVars.port}`,
-      basePath: '/'
+      basePath: '/',
     },
-    apis: ['./src/routes/*']
+    apis: ['./src/routes/*'],
   },
   port: envVars.port,
-  connectionString: envVars.connectionString
-}
+  connectionString: envVars.connectionString,
+};
 
-export default parameter => config[parameter] ? config[parameter] : null
+export default parameter => (config[parameter] ? config[parameter] : null);
