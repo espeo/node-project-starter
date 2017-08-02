@@ -1,0 +1,38 @@
+server:
+  build: ./docker/server
+  working_dir: /app/server
+  volumes:
+    - ./server:/app/server
+  ports:
+    - 3000:3000
+  links:
+    - dev_db
+    - test_db
+
+dev_db:
+  image: postgres
+  environment:
+    POSTGRES_USER: user
+    POSTGRES_PASSWORD: pass
+    POSTGRES_DB: dev
+  expose:
+    - 5432
+
+test_db:
+  image: postgres
+  environment:
+    POSTGRES_USER: user
+    POSTGRES_PASSWORD: pass
+    POSTGRES_DB: test
+  expose:
+    - 5432
+
+nginx:
+  build: ./docker/nginx
+  working_dir: /app
+  ports:
+    - 8081:80
+  volumes:
+    - ./nginx:/app/nginx
+  links:
+    - server:server
